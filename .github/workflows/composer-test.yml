@@ -1,0 +1,25 @@
+name: PHP Composer Test
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+
+      - name: Install Composer Dependencies
+        run: composer install
+
+      #- name: Run Tests
+      #  run: vendor/bin/phpunit  # Hier den Befehl zum Ausführen der Tests angeben
